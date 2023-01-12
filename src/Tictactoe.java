@@ -5,15 +5,22 @@
  */
 public class Tictactoe {
 	private String[][] board;
-	private static final int ROWS = 3;
-	private static final int COLUMNS = 3;
+	private static int rows = 3;
+	private static int columns = 3;
 	private String regex = "\\s{3}";
 	
 	/**
 	 * Tictactoe constructor
 	 */
 	public Tictactoe() {
-		board = new String[ROWS][COLUMNS];
+		board = new String[rows][columns];
+		this.initializeBoard();
+//		this.winXtest();
+	}
+
+	public Tictactoe(int rowColumn) {
+		rows = columns = rowColumn;
+		board = new String[rows][columns];
 		this.initializeBoard();
 //		this.winXtest();
 	}
@@ -22,8 +29,8 @@ public class Tictactoe {
 	 * initializing board and fill with empty spaces
 	 */	
 	public void initializeBoard() {
-		for(int i = 0; i < ROWS; i++) {
-			for(int j = 0; j < COLUMNS; j++) {
+		for(int i = 0; i < rows; i++) {
+			for(int j = 0; j < columns; j++) {
 				board[i][j] = "   ";
 			}
 		}
@@ -45,14 +52,14 @@ public class Tictactoe {
 	 */
 	public boolean isGameOver() {
 		//checking rows
-    	for(int i = 0; i < ROWS; i++) {
+    	for(int i = 0; i < rows; i++) {
     		if(!board[i][0].matches(regex) && board[i][0].equals(board[i][1]) && board[i][1].equals(board[i][2])) {    			
     			return true; 
     		}   			 			
     	}
     	//checking columns
     	
-    	for(int j = 0; j < COLUMNS; j++) {    		
+    	for(int j = 0; j < columns; j++) {    		
     		if(!board[0][j].matches(regex) && board[0][j].equals(board[1][j]) && board[1][j].equals(board[2][j])) 
     			return true;  			
     	}
@@ -72,15 +79,30 @@ public class Tictactoe {
 	 */
 	public String printBoard() {
 		String strBoard = "";
-		for(int i = 0; i < ROWS; i++) {
-			for(int j = 0; j < COLUMNS; j++) {
-				if(j == COLUMNS-1)
+		for(int i = 0; i < rows; i++) {
+			for(int j = 0; j < columns; j++) {
+				if(j == columns-1)
 					strBoard += board[i][j];
 				else
 					strBoard += board[i][j] + "|";
 			}
-			if(i != ROWS-1)
-				strBoard += "\n---+---+---\n";
+			if(i != rows-1)
+			for(int k = 0; k < columns; k++){
+				if(k==0){
+					strBoard += "\n";
+					continue;
+				}
+				// if(k == columns){
+				// 	strBoard += "\n";
+				// 	continue;
+				// }
+				if(k == columns-1){
+					strBoard += "---+---\n";
+					continue;
+				}
+				strBoard += "---+";
+				
+			}		
 		}
 		return strBoard;
 	}
@@ -89,8 +111,8 @@ public class Tictactoe {
 	 * test unit 1st column X
 	 */
 	public void winXtest() {
-		for(int i = 0; i < ROWS; i++) {
-			for(int j = 0; j < COLUMNS; j++) {
+		for(int i = 0; i < rows; i++) {
+			for(int j = 0; j < columns; j++) {
 				if(j == 0)
 					board[i][j] = " X ";
 				else
