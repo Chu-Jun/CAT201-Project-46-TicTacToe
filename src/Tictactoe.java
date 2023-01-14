@@ -53,21 +53,34 @@ public class Tictactoe {
 	public boolean isGameOver() {
 		//checking rows
     	for(int i = 0; i < rows; i++) {
-    		if(!board[i][0].matches(regex) && board[i][0].equals(board[i][1]) && board[i][1].equals(board[i][2])) {    			
+    		if(!board[i][0].matches(regex)){ 
+				for(int k = 1; k < rows; k++){
+					if(!board[i][k-1].equals(board[i][k])){
+						return false;
+					}
+				}
     			return true; 
     		}   			 			
     	}
+
     	//checking columns
-    	
     	for(int j = 0; j < columns; j++) {    		
-    		if(!board[0][j].matches(regex) && board[0][j].equals(board[1][j]) && board[1][j].equals(board[2][j])) 
-    			return true;  			
+    		if(!board[0][j].matches(regex)){
+			for(int m = 1; m < rows; m++){
+				if(!board[m-1][j].equals(board[m][j])){
+					return false;
+				}
+			}
+    		return true;  	
+			}		
     	}
+
     	//checking diagonals
     	if(!board[0][0].matches(regex) && board[0][0].equals(board[1][1]) && board[1][1].equals(board[2][2]))
     		return true;
     	if(!board[0][2].matches(regex) && board[0][2].equals(board[1][1]) && board[1][1].equals(board[2][0]))
     		return true;
+
     	//no body's won
     	return false;
 		
@@ -92,10 +105,6 @@ public class Tictactoe {
 					strBoard += "\n";
 					continue;
 				}
-				// if(k == columns){
-				// 	strBoard += "\n";
-				// 	continue;
-				// }
 				if(k == columns-1){
 					strBoard += "---+---\n";
 					continue;
