@@ -66,10 +66,10 @@ public class Tictactoe {
     	//checking columns
     	for(int j = 0; j < columns; j++) {    		
     		if(!board[0][j].matches(regex)){
-			for(int m = 1; m < rows; m++){
-				if(!board[m-1][j].equals(board[m][j])){
-					return false;
-				}
+				for(int m = 1; m < rows; m++){
+					if(!board[m-1][j].equals(board[m][j])){
+						return false;
+					}
 			}
     		return true;  	
 			}		
