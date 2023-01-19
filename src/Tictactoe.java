@@ -15,14 +15,12 @@ public class Tictactoe {
 	public Tictactoe() {
 		board = new String[rows][columns];
 		this.initializeBoard();
-//		this.winXtest();
 	}
 
 	public Tictactoe(int rowColumn) {
 		rows = columns = rowColumn;
 		board = new String[rows][columns];
 		this.initializeBoard();
-//		this.winXtest();
 	}
 	
 	/**
@@ -50,9 +48,10 @@ public class Tictactoe {
 	/**
 	 * finding winners
 	 */
-	public boolean isGameOver() {
+	public boolean isGameOverRow() {
 		//checking rows
     	for(int i = 0; i < rows; i++) {
+			// System.out.println("test");	
     		if(!board[i][0].matches(regex)){ 
 				for(int k = 1; k < rows; k++){
 					if(!board[i][k-1].equals(board[i][k])){
@@ -62,28 +61,49 @@ public class Tictactoe {
     			return true; 
     		}   			 			
     	}
+		return false;
+	}
 
+	public boolean isGameOverColumn() {
     	//checking columns
-    	for(int j = 0; j < columns; j++) {    		
+    	for(int j = 0; j < columns; j++) {    
+					
     		if(!board[0][j].matches(regex)){
-				for(int m = 1; m < rows; m++){
+				for(int m = 1; m < columns; m++){
 					if(!board[m-1][j].equals(board[m][j])){
 						return false;
 					}
-			}
-    		return true;  	
+				}
+    			return true;  	
 			}		
-    	}
+    	}	
+		return false;
+	}
 
+	public boolean isGameOverDiagonal() {
     	//checking diagonals
-    	if(!board[0][0].matches(regex) && board[0][0].equals(board[1][1]) && board[1][1].equals(board[2][2]))
-    		return true;
-    	if(!board[0][2].matches(regex) && board[0][2].equals(board[1][1]) && board[1][1].equals(board[2][0]))
-    		return true;
+    	if(!board[0][0].matches(regex)){
+			for(int i=0; i<rows; i++){
+				if(i == (rows-1)){
+					return true;
+				}
+				if(board[i][i].equals(board[i+1][i+1])){
+					return true;
+				}
+			}
+		}
+		if(!board[0][rows].matches(regex)){
+			for(int i=rows; i>0; i--){
+				if(board[i][i].equals(board[i+1][i+1])){
+					return true;
+				}
+			}
+		}
+    	// if(!board[0][2].matches(regex) && board[0][2].equals(board[1][1]) && board[1][1].equals(board[2][0]))
+    	// 	return true;
 
     	//no body's won
     	return false;
-		
 	}
 	
 	/**

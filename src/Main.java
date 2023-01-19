@@ -22,10 +22,18 @@ public class Main {
 			row = row - 1;
 			column = column - 1;
 			game.setPlay(row,  column, player);
-			if(game.isGameOver()) {
+			if(game.isGameOverRow()) {
 				System.out.println(game.printBoard() + "\n" + player +" wins!");
 				break;
 			}
+			if(game.isGameOverColumn()) {
+				System.out.println(game.printBoard() + "\n" + player +" wins!");
+				break;
+			}
+			// if(game.isGameOverDiagonal()) {
+			// 	System.out.println(game.printBoard() + "\n" + player +" wins!");
+			// 	break;
+			// }
 			if(player == "X") {
 				player = "O";				
 			}
