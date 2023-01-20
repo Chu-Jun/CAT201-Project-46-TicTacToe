@@ -21,7 +21,7 @@ public class TicTacToeGUI extends JFrame {
 
     public TicTacToeGUI(String player1, String player2, int rows, int cols) {
         // Initialize game logic object
-        game = new Tictactoe();
+        game = new Tictactoe(rows);
 
         // Set current player
         currentPlayer = "X";
@@ -63,11 +63,11 @@ public class TicTacToeGUI extends JFrame {
         playerLabel2.setForeground(Color.WHITE);
         playerLabel2.setFont(new Font("Roboto Mono", Font.PLAIN, 24));
 
-        JLabel scoreLabel1 = new JLabel("X: 0");
+        JLabel scoreLabel1 = new JLabel("X: " + game.returnScore1());
         scoreLabel1.setForeground(Color.WHITE);
         scoreLabel1.setFont(new Font("Roboto Mono", Font.PLAIN, 24));
 
-        JLabel scoreLabel2 = new JLabel("O: 0");
+        JLabel scoreLabel2 = new JLabel("O: " + game.returnScore2());
         scoreLabel2.setForeground(Color.WHITE);
         scoreLabel2.setFont(new Font("Roboto Mono", Font.PLAIN, 24));
         
@@ -106,13 +106,6 @@ public class TicTacToeGUI extends JFrame {
         public void actionPerformed(ActionEvent e) {
             JButton button = (JButton) e.getSource();
             button.setForeground(new Color(255, 0, 0));
-            if(currentPlayer.equals("X")){
-                button.setText("X");
-                currentPlayer = "O";
-            }else{
-                button.setText("O");
-                currentPlayer = "X";
-            }
             // Find the button's coordinates on the game board
             int x = -1, y = -1;
             for (int i = 0; i < rows; i++) {
@@ -120,45 +113,39 @@ public class TicTacToeGUI extends JFrame {
                     if (board[i][j] == button) {
                         x = i;
                         y = j;
-                        if(currentPlayer.equals("X")){
-                            game.setPlay(x,  y, "X");
-                        }else{
-                            game.setPlay(x,  y, "O");
-                        }
-                        if(game.isGameOverRow()) {
-                            if(currentPlayer.equals("X")){
-                                game.calculateScore("X");
-                            }else{
-                                game.calculateScore("O");
-                            }
-                            break;
-                        }
-                        if(game.isGameOverColumn()) {
-                            if(currentPlayer.equals("X")){
-                                game.calculateScore("X");
-                            }else{
-                                game.calculateScore("O");
-                            }
-                            break;
-                        }
-                        // if(game.isGameOverDiagonal()) {
-                        // 	if(currentPlayer.equals("X")){
-                        //     game.calculateScore("X");
-                        // }else{
-                        //     game.calculateScore("O");
-                        // }
-                        // 	break;
-                        // }
-                        if(currentPlayer.equals("X")) {
-                            currentPlayer = "O";				
-                        }
-                        else {
-                            currentPlayer = "X";
-                        }
-                        break;
                     }
                 }
             }
+            if(currentPlayer.equals("X")){
+                button.setText("X");
+                currentPlayer = "O";
+                game.setPlay(x,  y, "X");
+            }else{
+                button.setText("O");
+                currentPlayer = "X";
+                game.setPlay(x,  y, "O");
+            }
+            if(game.isGameOverRow()) {
+                if(currentPlayer.equals("X")){
+                    game.calculateScore("X");
+                }else{
+                    game.calculateScore("O");
+                }
+            }
+            if(game.isGameOverColumn()) {
+                if(currentPlayer.equals("X")){
+                    game.calculateScore("X");
+                }else{
+                    game.calculateScore("O");
+                }
+            }
+            // if(game.isGameOverDiagonal()) {
+            // 	if(currentPlayer.equals("X")){
+            //     game.calculateScore("X");
+            // }else{
+            //     game.calculateScore("O");
+            // }
+            // }
         }
     }
 
