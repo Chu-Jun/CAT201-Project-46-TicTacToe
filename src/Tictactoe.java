@@ -102,8 +102,6 @@ public class Tictactoe {
 			}
 			return true;
 		}
-    	// if(!board[0][2].matches(regex) && board[0][2].equals(board[1][1]) && board[1][1].equals(board[2][0]))
-    	// 	return true;
 
     	//no body's won
     	return false;
@@ -126,7 +124,7 @@ public class Tictactoe {
 	}
 	
 	/**
-	 * Print board to screen
+	 * Print board to screen FOR TESTING PURPOSE IN TERMINAL
 	 * @return strBoard
 	 */
 	public String printBoard() {

@@ -15,6 +15,8 @@ public class StartGame implements ActionListener  {
     public StartGame(){
 
         frame.setSize(600, 400);
+        ImageIcon companyLogo = new ImageIcon("src/OTTY-Logo.png");
+        frame.setIconImage(companyLogo.getImage());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
     
