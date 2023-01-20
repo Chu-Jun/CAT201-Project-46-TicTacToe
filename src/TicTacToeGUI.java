@@ -121,11 +121,12 @@ public class TicTacToeGUI extends JFrame {
                     }
                 }
             }
-            if(currentPlayer.equals("X")){
+           if(currentPlayer.equals("X") && button.getText().equals("")){
                 button.setText("X");
                 currentPlayer = "O";
                 game.setPlay(x,  y, "X");
-            }else{
+            }
+            if(currentPlayer.equals("O") && button.getText().equals("")){
                 button.setText("O");
                 currentPlayer = "X";
                 game.setPlay(x,  y, "O");
