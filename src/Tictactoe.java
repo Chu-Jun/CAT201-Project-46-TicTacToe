@@ -92,10 +92,11 @@ public class Tictactoe {
 			}
 			return true;
 		}
-		if(!board[rows-1][rows-1].matches(regex)){
+
+		if(!board[0][rows-1].matches(regex)){
 			int j=0;
-			for(int i=(rows-1); i>0; i--){
-				if(!board[j][i].equals(board[++j][i-1])){
+			for(int i=(rows-1); i>0; ){
+				if(!board[j][i].equals(board[++j][--i])){
 					return false;
 				}
 			}
