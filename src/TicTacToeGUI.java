@@ -160,31 +160,7 @@ public class TicTacToeGUI extends JFrame {
                 }
             }
         }
-
-
-            //THIS JUST A REFERENCE TO CONNECT BACKEND CODE, HAVENT FOUND OUT HOW TO DO FOR ChuJun CODE
-            // Make a move if the button is empty and the game is not over
-
-            // if (button.getText().equals("") && !game.isGameOver()) {
-            //     button.setText(currentPlayer);
-            //     game.makeMove(x, y, currentPlayer);
-            //     // Check for a win or a tie
-            //     if (game.checkForWin()) {
-            //         statusLabel.setText("Player " + currentPlayer + " wins!");
-            //     } else if (game.checkForTie()) {
-            //         statusLabel.setText("Tie game!");
-            //     } else {
-            //         // Switch to the other player
-            //         currentPlayer = (currentPlayer.equals("X")) ? "O" : "X";
-            //         statusLabel.setText("Player " + currentPlayer + " 's turn");
-            //     }
-            //     }
-            //     }
-            //     }
-        
-
-
-        }
+    }
 
 }
  
