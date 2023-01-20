@@ -57,33 +57,84 @@ public class TicTacToeGUI extends JFrame {
         JPanel scorJPanel = new JPanel();
         scorJPanel.setBackground(new Color(71,76,79));
         // scorJPanel.setLayout(new GridLayout());
-        scorJPanel.setLayout(new BoxLayout(scorJPanel, BoxLayout.Y_AXIS));
-
-        JLabel playerLabel1 = new JLabel("X: " + player1);
-        playerLabel1.setForeground(Color.WHITE);
-        playerLabel1.setFont(new Font("Roboto Mono", Font.PLAIN, 24));
-
-        JLabel playerLabel2 = new JLabel("O: " + player2);
-        playerLabel2.setForeground(Color.WHITE);
-        playerLabel2.setFont(new Font("Roboto Mono", Font.PLAIN, 24));
-
-        JLabel scoreLabel1 = new JLabel("X: " + game.returnScore1());
-        scoreLabel1.setForeground(Color.WHITE);
-        scoreLabel1.setFont(new Font("Roboto Mono", Font.PLAIN, 24));
-
-        JLabel scoreLabel2 = new JLabel("O: " + game.returnScore2());
-        scoreLabel2.setForeground(Color.WHITE);
-        scoreLabel2.setFont(new Font("Roboto Mono", Font.PLAIN, 24));
+        scorJPanel.setLayout(null);
         
-        scorJPanel.add(playerLabel1);
-        scorJPanel.add(playerLabel2);
-        scorJPanel.add(scoreLabel1);  
-        scorJPanel.add(scoreLabel2);  
+        JLabel X_icon = new JLabel();
+        ImageIcon x_icon = new ImageIcon(new ImageIcon("src/X_image.png").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH));
+        X_icon.setIcon(x_icon);
+        X_icon.setBounds(10, 10, 50, 50);
+        scorJPanel.add(X_icon);
 
-        // Create a panel for the status label
-        JPanel statusPanel = new JPanel();
-        statusLabel = new JLabel("Player " + currentPlayer + "'s turn");
-        statusPanel.add(statusLabel);
+        JLabel playerLabel1 = new JLabel(":  " + player1);
+        playerLabel1.setForeground(Color.WHITE);
+        playerLabel1.setFont(new Font("Roboto Mono", Font.PLAIN, 35));
+        playerLabel1.setBounds(80, 10, 1000, 50);
+        scorJPanel.add(playerLabel1);
+
+        JLabel O_icon = new JLabel();
+        ImageIcon o_icon = new ImageIcon(new ImageIcon("src/O_image.png").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH));
+        O_icon.setIcon(o_icon);
+        O_icon.setBounds(10, 80, 50, 50);
+        scorJPanel.add(O_icon);
+
+        JLabel playerLabel2 = new JLabel(":  " + player2);
+        playerLabel2.setForeground(Color.WHITE);
+        playerLabel2.setFont(new Font("Roboto Mono", Font.PLAIN, 35));
+        playerLabel2.setBounds(80, 80, 1000, 50);
+        scorJPanel.add(playerLabel2);
+
+        JLabel statusLabel1 = new JLabel("It's");
+        statusLabel1.setForeground(Color.RED);
+        statusLabel1.setFont(new Font("Serif", Font.ITALIC, 50));
+        statusLabel1.setBounds(150, 220, 1000, 50);
+        scorJPanel.add(statusLabel1);
+
+        JLabel statusLabel2 = new JLabel(currentPlayer + "'s turn");
+        statusLabel2.setForeground(Color.RED);
+        statusLabel2.setFont(new Font("Serif", Font.ITALIC, 50));
+        statusLabel2.setBounds(100, 270, 1000, 50);
+        scorJPanel.add(statusLabel2);
+        
+        JLabel scoreLabel = new JLabel("Score");
+        scoreLabel.setForeground(Color.WHITE);
+        scoreLabel.setFont(new Font("Roboto Mono", Font.BOLD, 35));
+        scoreLabel.setBounds(10, 410, 1000, 50);
+        scorJPanel.add(scoreLabel);  
+
+        JLabel scoreForX = new JLabel("X: " + game.returnScore1());
+        scoreForX.setForeground(Color.WHITE);
+        scoreForX.setFont(new Font("Roboto Mono", Font.PLAIN, 25));
+        scoreForX.setBounds(10, 480, 1000, 50);
+        scorJPanel.add(scoreForX);  
+
+        JLabel scoreForO = new JLabel("O: " + game.returnScore2());
+        scoreForO.setForeground(Color.WHITE);
+        scoreForO.setFont(new Font("Roboto Mono", Font.PLAIN, 25));
+        scoreForO.setBounds(10, 550, 1000, 50);
+        scorJPanel.add(scoreForO);  
+
+        // Create a reset button for user to reset the game
+        JButton resetButton = new JButton();
+        resetButton.setText("RESET");
+        resetButton.setFont(new java.awt.Font("Tahoma", 1, 24)); 
+        resetButton.setBounds(85, 640, 200, 50);
+        resetButton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                for (int i = 0; i < rows; i++) {
+                    for (int j = 0; j < cols; j++) {
+                        board[i][j].setText("");
+                    }
+                }
+            }
+        });
+        scorJPanel.add(resetButton);
+        
+        // Create an exit button for user to exit the game
+        JButton exitButton = new JButton();
+        exitButton.setText("EXIT");
+        exitButton.setFont(new java.awt.Font("Tahoma", 1, 24)); 
+        exitButton.setBounds(85, 710, 200, 50);
+        scorJPanel.add(exitButton);
         
         splitPane.setLeftComponent(boardPanel);
         splitPane.setRightComponent(scorJPanel);
