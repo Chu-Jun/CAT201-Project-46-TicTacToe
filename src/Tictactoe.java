@@ -51,39 +51,62 @@ public class Tictactoe {
 	 * finding winners
 	 */
 	public boolean isGameOverRow() {
+		boolean condition=false;
 		//checking rows
     	for(int i = 0; i < rows; i++) {
+			System.out.println("CHECKING ROW "+ i);
     		if(!board[i][0].matches(regex)){ 
 				for(int k = 1; k < rows; k++){
+					System.out.println("CHECKING COLUMN"+ k);
 					if(!board[i][k-1].equals(board[i][k])){
-						return false;
+						condition = false;
+						break;
+					}else{
+						condition = true;
 					}
 				}
-    			return true; 
-    		}   			 			
+    		}
+			if(condition!=false){
+				return true;
+			}    	
+			continue;	
     	}
-		return false;
+		if(condition == true){
+			return condition;
+		}else{
+			return false;
+		}
 	}
 
 	public boolean isGameOverColumn() {
     	//checking columns
-    	for(int j = 0; j < columns; j++) {    
-					
+		boolean condition = false;
+    	for(int j = 0; j < columns; j++) {    		
     		if(!board[0][j].matches(regex)){
 				for(int m = 1; m < columns; m++){
 					if(!board[m-1][j].equals(board[m][j])){
-						return false;
+						condition = false;
+						break;
+					}else{
+						condition = true;
 					}
 				}
-    			return true;  	
-			}		
-    	}	
-		return false;
+			}
+    		if(condition!=false){
+				return true;
+			}    	
+			continue;	
+    	}
+		if(condition == true){
+			return condition;
+		}else{
+			return false;
+		}
 	}
 
 	public boolean isGameOverDiagonal() {
-    	//checking diagonals
-    	if(!board[0][0].matches(regex)){
+		//checking diagonals
+		if(!board[0][0].matches(regex)){
 			for(int i=0; i<(rows-1); i++){
 				if(!board[i][i].equals(board[i+1][i+1])){
 					return false;
