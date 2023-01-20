@@ -133,23 +133,63 @@ public class TicTacToeGUI extends JFrame {
             
             if(game.isGameOverRow()) {
                 if(currentPlayer.equals("X")){
-                    game.calculateScore("X");
+                    currentPlayer = "O";
                 }else{
-                    game.calculateScore("O");
+                    currentPlayer = "X";
                 }
-            }
-            if(game.isGameOverColumn()) {
+                System.out.println(game.printBoard() + "\n" + currentPlayer +" wins!ROW");
                 if(currentPlayer.equals("X")){
                     game.calculateScore("X");
                 }else{
                     game.calculateScore("O");
                 }
+                System.out.println(game.returnScore1());
+                System.out.println(game.returnScore2());
+                if(currentPlayer.equals("X")){
+                    currentPlayer = "O";
+                }else{
+                    currentPlayer = "X";
+                }
+            }
+            if(game.isGameOverColumn()) {
+                if(currentPlayer.equals("X")){
+                    currentPlayer = "O";
+                }else{
+                    currentPlayer = "X";
+                }
+                System.out.println(game.printBoard() + "\n" + currentPlayer +" wins!COLUMN");
+                if(currentPlayer.equals("X")){
+                    game.calculateScore("X");
+                }else{
+                    game.calculateScore("O");
+                }
+                System.out.println(game.returnScore1());
+                System.out.println(game.returnScore2());
+                if(currentPlayer.equals("X")){
+                    currentPlayer = "O";
+                }else{
+                    currentPlayer = "X";
+                }
             }
             if(game.isGameOverDiagonal()) {
+                if(currentPlayer.equals("X")){
+                    currentPlayer = "O";
+                }else{
+                    currentPlayer = "X";
+                }
+                System.out.println(game.printBoard() + "\n" + currentPlayer +" wins!DIAGONAL");
             	if(currentPlayer.equals("X")){
                 game.calculateScore("X");
             }else{
                 game.calculateScore("O");
+                
+            }
+            System.out.println(game.returnScore1());
+            System.out.println(game.returnScore2());
+            if(currentPlayer.equals("X")){
+                currentPlayer = "O";
+            }else{
+                currentPlayer = "X";
             }
             
         }
