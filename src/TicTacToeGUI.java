@@ -30,6 +30,9 @@ public class TicTacToeGUI extends JFrame {
         setTitle("Tic Tac Toe");
         setSize(800, 800);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+       
+        // Split the frame into two section horizontally
+        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 
         // Create a panel for the game board
         JPanel boardPanel = new JPanel();
@@ -44,14 +47,54 @@ public class TicTacToeGUI extends JFrame {
                 boardPanel.add(board[i][j]);
             }
         }
+       
+        // Create a panel for the scoreboard
+        JPanel scorJPanel = new JPanel();
+        scorJPanel.setBackground(new Color(71,76,79));
+        // scorJPanel.setLayout(new GridLayout());
+        scorJPanel.setLayout(new BoxLayout(scorJPanel, BoxLayout.Y_AXIS));
+
+        JLabel playerLabel1 = new JLabel("X: " + player1);
+        playerLabel1.setForeground(Color.WHITE);
+        playerLabel1.setFont(new Font("Roboto Mono", Font.PLAIN, 24));
+
+        JLabel playerLabel2 = new JLabel("O: " + player2);
+        playerLabel2.setForeground(Color.WHITE);
+        playerLabel2.setFont(new Font("Roboto Mono", Font.PLAIN, 24));
+
+        JLabel scoreLabel1 = new JLabel("X: 0");
+        scoreLabel1.setForeground(Color.WHITE);
+        scoreLabel1.setFont(new Font("Roboto Mono", Font.PLAIN, 24));
+
+        JLabel scoreLabel2 = new JLabel("O: 0");
+        scoreLabel2.setForeground(Color.WHITE);
+        scoreLabel2.setFont(new Font("Roboto Mono", Font.PLAIN, 24));
+        
+        scorJPanel.add(playerLabel1);
+        scorJPanel.add(playerLabel2);
+        scorJPanel.add(scoreLabel1);  
+        scorJPanel.add(scoreLabel2);  
 
         // Create a panel for the status label
         JPanel statusPanel = new JPanel();
         statusLabel = new JLabel("Player " + currentPlayer + "'s turn");
         statusPanel.add(statusLabel);
+        
+        splitPane.setLeftComponent(boardPanel);
+        splitPane.setRightComponent(scorJPanel);
 
-        // Add the board and status panels to the frame
-        add(boardPanel, BorderLayout.CENTER);
+        // Fix the right section
+        splitPane.setResizeWeight(1);
+    
+        // Set divider location to 400 pixel value
+        splitPane.setDividerLocation(400);
+
+        // Lock divider location
+        splitPane.setEnabled(false);
+        
+        add(splitPane, BorderLayout.CENTER);
+
+        // Add the status panels to the frame
         add(statusPanel, BorderLayout.SOUTH);
 
         // Display the GUI
