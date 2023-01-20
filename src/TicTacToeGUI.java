@@ -108,8 +108,10 @@ public class TicTacToeGUI extends JFrame {
             button.setForeground(new Color(255, 0, 0));
             if(currentPlayer.equals("X")){
                 button.setText("X");
+                currentPlayer = "O";
             }else{
                 button.setText("O");
+                currentPlayer = "X";
             }
             // Find the button's coordinates on the game board
             int x = -1, y = -1;
