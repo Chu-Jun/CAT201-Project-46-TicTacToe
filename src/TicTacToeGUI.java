@@ -117,11 +117,7 @@ public class TicTacToeGUI extends JFrame {
         resetButton.setBounds(85, 640, 200, 50);
         resetButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                for (int i = 0; i < rows; i++) {
-                    for (int j = 0; j < cols; j++) {
-                        board[i][j].setText("");
-                    }
-                }
+                cleanBoard();
             }
         });
         scorJPanel.add(resetButton);
@@ -156,6 +152,17 @@ public class TicTacToeGUI extends JFrame {
         setVisible(true);
     }
 
+    public void cleanBoard(){
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < column; j++) {
+                board[i][j].setText("");
+                currentPlayer = "X";
+                game.initializeBoard();;
+            }
+        }
+    }
+
+
     public class ButtonListener implements ActionListener{
         public void actionPerformed(ActionEvent e) {
             JButton button = (JButton) e.getSource();
@@ -182,14 +189,16 @@ public class TicTacToeGUI extends JFrame {
                 currentPlayer = "X";
                 game.setPlay(x,  y, "O");
             }
-
+            System.out.println(game.printBoard() + "\n");
             if(game.isGameOverRow()) {
 
                 if (currentPlayer == "X") {
-                JOptionPane.showMessageDialog(null, "O has won this round!", "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "O has won this round!", "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
+                    cleanBoard();
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "X has won this round!", "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
+                    cleanBoard();
                 }
                 if(currentPlayer.equals("X")){
                     currentPlayer = "O";
@@ -214,10 +223,12 @@ public class TicTacToeGUI extends JFrame {
 
                 if (currentPlayer == "X") {
                     JOptionPane.showMessageDialog(null, "O has won this round!", "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
-                    }
+                    cleanBoard();
+                }
                 else{
                     JOptionPane.showMessageDialog(null, "X has won this round!", "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
-                    }
+                    cleanBoard();
+                }
                 if(currentPlayer.equals("X")){
                     currentPlayer = "O";
                 }else{
@@ -240,10 +251,12 @@ public class TicTacToeGUI extends JFrame {
             if(game.isGameOverDiagonal()) {
                 if (currentPlayer == "X") {
                     JOptionPane.showMessageDialog(null, "O has won this round!", "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
-                    }
+                    cleanBoard();
+                }
                 else{
                     JOptionPane.showMessageDialog(null, "X has won this round!", "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
-                    }
+                    cleanBoard();
+                }
                 if(currentPlayer.equals("X")){
                     currentPlayer = "O";
                 }else{

@@ -123,6 +123,7 @@ public class Tictactoe {
 		return score2;
 	}
 	
+
 	/**
 	 * Print board to screen FOR TESTING PURPOSE IN TERMINAL
 	 * @return strBoard

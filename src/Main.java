@@ -55,6 +55,7 @@ public class Main {
 					}else{
 						score2++;
 					}
+
 					System.out.println("Player Name\t\t" + "Score");
 					System.out.println("------------------------------");
 					System.out.println(player1 + "\t" + score1);
