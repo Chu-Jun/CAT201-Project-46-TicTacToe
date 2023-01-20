@@ -36,7 +36,7 @@ public class StartGame implements ActionListener  {
         text2.setBounds(110, 40, 180, 25);
         panel.add(text2);
 
-        JLabel label3 = new JLabel("Enter the number of rows");
+        JLabel label3 = new JLabel("Enter the number of rows and columns");
         label3.setBounds(20, 90, 200, 25);
         panel.add(label3);
 
@@ -44,13 +44,13 @@ public class StartGame implements ActionListener  {
         rowsinput.setBounds(210, 90, 30, 25);
         panel.add(rowsinput);
 
-        JLabel label4 = new JLabel("Enter the number of columns");
-        label4.setBounds(20, 120, 200, 25);
-        panel.add(label4);
+        // JLabel label4 = new JLabel("Enter the number of columns");
+        // label4.setBounds(20, 120, 200, 25);
+        // panel.add(label4);
 
-        colsinput = new JTextField();
-        colsinput.setBounds(210, 120, 30, 25);
-        panel.add(colsinput);
+        // colsinput = new JTextField();
+        // colsinput.setBounds(210, 120, 30, 25);
+        // panel.add(colsinput);
 
         button.setBounds(65, 180, 140, 25);
         button.addActionListener(this);
@@ -66,7 +66,7 @@ public class StartGame implements ActionListener  {
             String player1 = text.getText();
             String player2 = text2.getText();
             int rows = Integer.valueOf(rowsinput.getText());
-            int cols = Integer.valueOf(colsinput.getText());
+            int cols = rows;
             if (!player1.isEmpty() && !player2.isEmpty()) {
                 frame.dispose();
                 TicTacToeGUI tictactoeGUI = new TicTacToeGUI(player1, player2, rows, cols);
@@ -77,9 +77,9 @@ public class StartGame implements ActionListener  {
 
     }
 
-public static void main(String[] args) {
-    new StartGame();
-}
+    public static void main(String[] args) {
+        new StartGame();
+    }
 
 }
     
