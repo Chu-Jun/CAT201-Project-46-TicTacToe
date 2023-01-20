@@ -1,65 +1,152 @@
 import javax.swing.*;
 import java.awt.event.*;
-
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
 
 public class StartGame implements ActionListener  {
 
-    JPanel panel = new JPanel();
+
+   // JPanel player1Panel = new JPanel();
     JFrame frame = new JFrame();
+    JPanel welcomePanel = new JPanel();
+    JPanel player1Panel = new JPanel();
+    JPanel player2Panel = new JPanel();
+    JPanel gameStructurePanel = new JPanel();
+    JPanel footerPanel = new JPanel();
+    JLabel label = new JLabel();
+    JLabel label2 = new JLabel();
+    JLabel gameStructureLabel = new JLabel();
+    JLabel welcomeLabel = new JLabel();
+    JLabel footerLabel = new JLabel();
     JButton button = new JButton("START");
-    JTextField text;
-    JTextField text2;  
-    JTextField rowsinput;
-    JTextField colsinput; 
+    JTextField player1TextField = new JTextField();
+    JTextField player2TextField = new JTextField(); 
+    JTextField gameGrid = new JTextField(); 
+   
 
     public StartGame(){
+      
+       //Frame design
+       frame.setSize(800, 600);
+       frame.setTitle ("Tic Tac Toe");
+       ImageIcon companyLogo = new ImageIcon("C:/Users/user/Desktop/CAT201-Project-TicTacToe-main/CAT201-Project-TicTacToe-main/src/OTTY-Logo.png");
+       frame.setIconImage(companyLogo.getImage());
+       frame.setResizable(false);
+       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       frame.getContentPane().setBackground(new Color(250, 219, 216));// hex:0x#FADBD8
+       frame.setVisible(true);
 
-        frame.setSize(600, 400);
-        ImageIcon companyLogo = new ImageIcon("src/OTTY-Logo.png");
-        frame.setIconImage(companyLogo.getImage());
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(panel);
+       //Set Welcome Panel (header) 
+       frame.setLayout(new BorderLayout());
+       frame.add (welcomePanel, BorderLayout.NORTH);
     
-        panel.setLayout(null);
+       //Set Contents Panel 
+       JPanel centerPanel = new JPanel (new GridLayout(1,2));
+       centerPanel.add(player1Panel);
+       centerPanel.add(player2Panel);
+       frame.add(centerPanel, BorderLayout.CENTER);
+       
+       //Set Footer Panel
+       JPanel footer = new JPanel(new GridLayout(2, 1));
+       JPanel footerRow1 = new JPanel();
+       footerRow1.add(new JLabel("Footer Row 1"));
+       footer.add(gameStructurePanel);
+       JPanel footerRow2 = new JPanel();
+       footerRow2.add(new JLabel("Footer Row 2"));
+       footer.add(footerPanel);
+       frame.add(footer, BorderLayout.SOUTH);
+    
+       //Set panel colour
+       welcomePanel.setBackground(new Color(200, 219, 216));
+       player1Panel.setBackground(new Color(250, 219, 216));
+       player2Panel.setBackground(new Color(250, 219, 216));
+       gameStructurePanel.setBackground(new Color(230, 219, 216));
+       footerPanel.setBackground(new Color(200, 219, 216));
 
-        JLabel label1 = new JLabel("Player 1");
-        label1.setBounds(20, 10, 80, 25);
-        panel.add(label1);
+      //Set welcome label
+       welcomeLabel.setText("Tic Tac Toe");
+       welcomeLabel.setHorizontalAlignment(JLabel.CENTER);
+       welcomeLabel.setFont(new Font("Arial", Font.BOLD, 30));
+       welcomePanel.add(welcomeLabel);
 
-        text = new JTextField();
-        text.setBounds(110, 10, 180, 25);
-        panel.add(text);
+       //Label for Player 1
+       ImageIcon imagePlayer1 = new ImageIcon ("C:/Users/user/Desktop/CAT201-Project-TicTacToe-main/CAT201-Project-TicTacToe-main/src/player1.png");
+       label.setText("Player 1");
+       label.setIcon(imagePlayer1);
+       label.setHorizontalTextPosition(JLabel.CENTER);
+       label.setVerticalTextPosition(JLabel.BOTTOM);
+       label.setForeground(new Color(0, 0, 0)); //set font color
+       label.setFont(new Font("Arial", Font.BOLD, 20)); //set font
+       label.setIconTextGap(2);
+       label.setVerticalAlignment(JLabel.CENTER);
+       label.setHorizontalAlignment (JLabel.LEFT);
+       player1Panel.add(label);
+      
+       
+       //Label for Player 2
+       ImageIcon imagePlayer2 = new ImageIcon ("C:/Users/user/Desktop/CAT201-Project-TicTacToe-main/CAT201-Project-TicTacToe-main/src/Player2.png" );
+       label2.setText("Player 2");
+       label2.setIcon(imagePlayer2);
+       label2.setHorizontalTextPosition(JLabel.CENTER);
+       label2.setVerticalTextPosition(JLabel.BOTTOM);
+       label2.setForeground(new Color(0, 0, 0)); //set font color
+       label2.setFont(new Font("Arial", Font.BOLD, 20)); //set font
+       label2.setIconTextGap(2);
+       label2.setVerticalAlignment(JLabel.CENTER);
+       label2.setHorizontalAlignment (JLabel.RIGHT); 
+       player2Panel.add(label2);;
 
-        JLabel label2 = new JLabel("Player 2");
-        label2.setBounds(20, 40, 80, 25);
-        panel.add(label2);
+    
+       // Label for game structure (rows and column played)
+      
+       gameStructureLabel.setText("Enter the number of rows \nand columns:");
+       gameStructureLabel.setFont(new Font("Arial", Font.BOLD, 20)); //set font
+       gameStructureLabel.setHorizontalTextPosition(JLabel.LEFT);
+       gameStructureLabel.setVerticalTextPosition(JLabel.BOTTOM);
+       gameStructurePanel.add(gameStructureLabel);
 
-        text2 = new JTextField();
-        text2.setBounds(110, 40, 180, 25);
-        panel.add(text2);
+       footerLabel.setText("This game is modified by:cj,zc,hj,kh for CAT201 Project, USM");
+       footerLabel.setFont(new Font("Papyrus", Font.BOLD, 15)); //set font
+       footerLabel.setHorizontalTextPosition(JLabel.LEFT);
+       footerLabel.setVerticalTextPosition(JLabel.BOTTOM);
+       footerPanel.add(footerLabel);
+      
+       //This section adds the text field for user to key in their names before game starts
+       //Player 1 text field settings
+       player1TextField.setColumns(20);
+       player1TextField.setFont(new Font("Arial", Font.PLAIN, 20));
+       player1Panel.add(player1TextField);
+       
+       //Player 2 text field settings
+       player2TextField.setColumns(20);
+       player2TextField.setFont(new Font("Arial", Font.PLAIN, 20));
+       player2Panel.add(player2TextField);
 
-        JLabel label3 = new JLabel("Enter the number of rows \nand columns");
-        label3.setBounds(20, 90, 200, 25);
-        panel.add(label3);
+       //Input rows and columns 
+       gameGrid.setColumns (5);
+       gameGrid.setFont(new Font("Arial", Font.PLAIN, 22));
+       gameStructurePanel.add(gameGrid);
 
-        rowsinput = new JTextField();
-        rowsinput.setBounds(210, 90, 30, 25);
-        panel.add(rowsinput);
+       //This section adds a start button in order to start the game
 
-        button.setBounds(65, 180, 140, 25);
         button.addActionListener(this);
-        panel.add(button);
+        button.setFont(new Font("Arial", Font.BOLD,15));
+        gameStructurePanel.add(button);
+        button.setBackground (new Color (250, 219,250));
 
-        frame.setVisible(true);
+
+    //     frame.setVisible(true);
     }
 
     public void actionPerformed(ActionEvent e){
         
         if(e.getSource() == button){
             
-            String player1 = text.getText();
-            String player2 = text2.getText();
-            int rows = Integer.valueOf(rowsinput.getText());
+            String player1 = player1TextField.getText();
+            String player2 = player2TextField.getText();
+            int rows = Integer.valueOf(gameGrid.getText());
             int cols = rows;
             if (!player1.isEmpty() && !player2.isEmpty()) {
                 frame.dispose();
@@ -76,5 +163,6 @@ public class StartGame implements ActionListener  {
     }
 
 }
+
     
 
