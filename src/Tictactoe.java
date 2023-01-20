@@ -85,21 +85,21 @@ public class Tictactoe {
 	public boolean isGameOverDiagonal() {
     	//checking diagonals
     	if(!board[0][0].matches(regex)){
-			for(int i=0; i<rows; i++){
-				if(i == (rows-1)){
-					return true;
-				}
-				if(board[i][i].equals(board[i+1][i+1])){
-					return true;
+			for(int i=0; i<(rows-1); i++){
+				if(!board[i][i].equals(board[i+1][i+1])){
+					return false;
 				}
 			}
+			return true;
 		}
-		if(!board[0][rows].matches(regex)){
-			for(int i=rows; i>0; i--){
-				if(board[i][i].equals(board[i+1][i+1])){
-					return true;
+		if(!board[rows-1][rows-1].matches(regex)){
+			int j=0;
+			for(int i=(rows-1); i>0; i--){
+				if(!board[j][i].equals(board[++j][i-1])){
+					return false;
 				}
 			}
+			return true;
 		}
     	// if(!board[0][2].matches(regex) && board[0][2].equals(board[1][1]) && board[1][1].equals(board[2][0]))
     	// 	return true;

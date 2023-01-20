@@ -1,3 +1,4 @@
+import java.lang.foreign.ValueLayout.OfLong;
 import java.util.Scanner;
 
 // import javax.swing.JScrollPane;
@@ -83,15 +84,15 @@ public class Main {
 					System.out.println("\n");
 					break;
 				}
-				// if(game.isGameOverDiagonal()) {
-				// 	System.out.println(game.printBoard() + "\n" + player +" wins!");
-				// 	if(player.equals(player1)){
-				// 		score1++;
-				// 	}else{
-				// 		score2++;
-				// 	}
-				// 	break;
-				// }
+				if(game.isGameOverDiagonal()) {
+					System.out.println(game.printBoard() + "\n" + player +" wins!");
+					if(player.equals(player1)){
+						score1++;
+					}else{
+						score2++;
+					}
+					break;
+				}
 				if(player.equals(player1)) {
 					player = player2;				
 				}
