@@ -16,6 +16,7 @@ public class TicTacToeGUI extends JFrame {
     private int row;
     private int column;
     public String playerName1, playerName2;
+    JLabel statusLabel2 = new JLabel();
 
     public TicTacToeGUI(String player1, String player2, int rows, int cols) {
 
@@ -89,7 +90,7 @@ public class TicTacToeGUI extends JFrame {
         statusLabel1.setBounds(150, 220, 1000, 50);
         scorJPanel.add(statusLabel1);
 
-        JLabel statusLabel2 = new JLabel(currentPlayer + "'s turn");
+        statusLabel2.setText("X" + "'s turn");
         statusLabel2.setForeground(Color.RED);
         statusLabel2.setFont(new Font("Serif", Font.ITALIC, 50));
         statusLabel2.setBounds(100, 270, 1000, 50);
@@ -186,11 +187,13 @@ public class TicTacToeGUI extends JFrame {
                 button.setText("X");
                 currentPlayer = "O";
                 game.setPlay(x,  y, "X");
+                statusLabel2.setText(currentPlayer + "'s turn");
             }
             if(currentPlayer.equals("O") && button.getText().equals("")){
                 button.setText("O");
                 currentPlayer = "X";
                 game.setPlay(x,  y, "O");
+                statusLabel2.setText(currentPlayer + "'s turn");
             }
             System.out.println(game.printBoard() + "\n");
             if(game.isGameOverRow()) {
