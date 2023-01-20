@@ -16,10 +16,14 @@ public class TicTacToeGUI extends JFrame {
     // Current player
     private String currentPlayer;
 
-    private int rows;
-    private int cols;
+    private int row;
+    private int column;
 
     public TicTacToeGUI(String player1, String player2, int rows, int cols) {
+
+        row = rows;
+        column = cols;
+
         // Initialize game logic object
         game = new Tictactoe(rows);
 
@@ -102,15 +106,16 @@ public class TicTacToeGUI extends JFrame {
         setVisible(true);
     }
 
-    public class ButtonListener implements ActionListener {
+    public class ButtonListener implements ActionListener{
         public void actionPerformed(ActionEvent e) {
             JButton button = (JButton) e.getSource();
             button.setForeground(new Color(255, 0, 0));
             // Find the button's coordinates on the game board
             int x = -1, y = -1;
-            for (int i = 0; i < rows; i++) {
-                for (int j = 0; j < cols; j++) {
-                    if (board[i][j] == button) {
+            
+            for (int i = 0; i < row; i++) {
+                for (int j = 0; j < column; j++) {
+                    if (e.getSource() == board[i][j]) {
                         x = i;
                         y = j;
                     }
@@ -125,6 +130,7 @@ public class TicTacToeGUI extends JFrame {
                 currentPlayer = "X";
                 game.setPlay(x,  y, "O");
             }
+            
             if(game.isGameOverRow()) {
                 if(currentPlayer.equals("X")){
                     game.calculateScore("X");
@@ -139,16 +145,18 @@ public class TicTacToeGUI extends JFrame {
                     game.calculateScore("O");
                 }
             }
-            // if(game.isGameOverDiagonal()) {
-            // 	if(currentPlayer.equals("X")){
-            //     game.calculateScore("X");
-            // }else{
-            //     game.calculateScore("O");
-            // }
-            // }
+            if(game.isGameOverDiagonal()) {
+            	if(currentPlayer.equals("X")){
+                game.calculateScore("X");
+            }else{
+                game.calculateScore("O");
+            }
+            
         }
+        
     }
-
+}
+    
 }
  
 

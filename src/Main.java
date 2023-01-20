@@ -55,14 +55,6 @@ public class Main {
 					}else{
 						score2++;
 					}
-					// String[] columnNames = {"Player Name", "Score"};
-					// Object[][] data = {
-    				// 					{player1, score1},
-    				// 					{player2, score2},
-					// };
-					// JTable table = new JTable(data, columnNames);
-					// JScrollPane scrollPane = new JScrollPane(table);
-					// System.out.println(scrollPane);
 					System.out.println("Player Name\t\t" + "Score");
 					System.out.println("------------------------------");
 					System.out.println(player1 + "\t" + score1);
