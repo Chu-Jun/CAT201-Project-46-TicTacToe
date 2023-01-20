@@ -105,7 +105,12 @@ public class TicTacToeGUI extends JFrame {
     public class ButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             JButton button = (JButton) e.getSource();
-            
+            button.setForeground(new Color(255, 0, 0));
+            if(currentPlayer.equals("X")){
+                button.setText("X");
+            }else{
+                button.setText("O");
+            }
             // Find the button's coordinates on the game board
             int x = -1, y = -1;
             for (int i = 0; i < rows; i++) {
