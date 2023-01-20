@@ -57,7 +57,7 @@ public class TicTacToeGUI extends JFrame {
         scorJPanel.setLayout(null);
         
         JLabel X_icon = new JLabel();
-        ImageIcon x_icon = new ImageIcon(new ImageIcon("src/X_image.png").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH));
+        ImageIcon x_icon = new ImageIcon(new ImageIcon("CAT201-Project-TicTacToe-main/src/X_image.png").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH));
         X_icon.setIcon(x_icon);
         X_icon.setBounds(10, 10, 50, 50);
         scorJPanel.add(X_icon);
@@ -69,7 +69,7 @@ public class TicTacToeGUI extends JFrame {
         scorJPanel.add(playerLabel1);
 
         JLabel O_icon = new JLabel();
-        ImageIcon o_icon = new ImageIcon(new ImageIcon("src/O_image.png").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH));
+        ImageIcon o_icon = new ImageIcon(new ImageIcon("CAT201-Project-TicTacToe-main/src/O_image.png").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH));
         O_icon.setIcon(o_icon);
         O_icon.setBounds(10, 80, 50, 50);
         scorJPanel.add(O_icon);
