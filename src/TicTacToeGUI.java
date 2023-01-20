@@ -131,6 +131,11 @@ public class TicTacToeGUI extends JFrame {
         exitButton.setText("EXIT");
         exitButton.setFont(new java.awt.Font("Tahoma", 1, 24)); 
         exitButton.setBounds(85, 710, 200, 50);
+        exitButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
         scorJPanel.add(exitButton);
         
         splitPane.setLeftComponent(boardPanel);
