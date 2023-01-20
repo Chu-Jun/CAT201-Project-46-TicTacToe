@@ -43,6 +43,7 @@ public class TicTacToeGUI extends JFrame {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 board[i][j] = new JButton();
+                board[i][j].setFont(new Font("Ink Free", Font.BOLD, 120));
                 board[i][j].addActionListener(new ButtonListener());
                 boardPanel.add(board[i][j]);
             }
@@ -104,6 +105,7 @@ public class TicTacToeGUI extends JFrame {
     public class ButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             JButton button = (JButton) e.getSource();
+            
             // Find the button's coordinates on the game board
             int x = -1, y = -1;
             for (int i = 0; i < rows; i++) {
@@ -111,6 +113,41 @@ public class TicTacToeGUI extends JFrame {
                     if (board[i][j] == button) {
                         x = i;
                         y = j;
+                        if(currentPlayer.equals("X")){
+                            game.setPlay(x,  y, "X");
+                        }else{
+                            game.setPlay(x,  y, "O");
+                        }
+                        if(game.isGameOverRow()) {
+                            if(currentPlayer.equals("X")){
+                                game.calculateScore("X");
+                            }else{
+                                game.calculateScore("O");
+                            }
+                            break;
+                        }
+                        if(game.isGameOverColumn()) {
+                            if(currentPlayer.equals("X")){
+                                game.calculateScore("X");
+                            }else{
+                                game.calculateScore("O");
+                            }
+                            break;
+                        }
+                        // if(game.isGameOverDiagonal()) {
+                        // 	if(currentPlayer.equals("X")){
+                        //     game.calculateScore("X");
+                        // }else{
+                        //     game.calculateScore("O");
+                        // }
+                        // 	break;
+                        // }
+                        if(currentPlayer.equals("X")) {
+                            currentPlayer = "O";				
+                        }
+                        else {
+                            currentPlayer = "X";
+                        }
                         break;
                     }
                 }
@@ -139,13 +176,11 @@ public class TicTacToeGUI extends JFrame {
             //     }
         
 
-// public static void main(String[] args) {
-//                 new TicTacToeGUI();
-
-//             }
-
 
         }
 
 }
+ 
+
+
 

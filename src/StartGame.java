@@ -36,21 +36,13 @@ public class StartGame implements ActionListener  {
         text2.setBounds(110, 40, 180, 25);
         panel.add(text2);
 
-        JLabel label3 = new JLabel("Enter the number of rows and columns");
+        JLabel label3 = new JLabel("Enter the number of rows \nand columns");
         label3.setBounds(20, 90, 200, 25);
         panel.add(label3);
 
         rowsinput = new JTextField();
         rowsinput.setBounds(210, 90, 30, 25);
         panel.add(rowsinput);
-
-        // JLabel label4 = new JLabel("Enter the number of columns");
-        // label4.setBounds(20, 120, 200, 25);
-        // panel.add(label4);
-
-        // colsinput = new JTextField();
-        // colsinput.setBounds(210, 120, 30, 25);
-        // panel.add(colsinput);
 
         button.setBounds(65, 180, 140, 25);
         button.addActionListener(this);

@@ -7,6 +7,8 @@ public class Tictactoe {
 	private String[][] board;
 	private static int rows = 3;
 	private static int columns = 3;
+	private static int score1 = 0;
+	private static int score2 = 0;
 	private String regex = "\\s{3}";
 	
 	/**
@@ -105,6 +107,22 @@ public class Tictactoe {
     	//no body's won
     	return false;
 	}
+
+	public void calculateScore(String player){
+		if(player.equals("X")){
+			score1++;
+		}else{
+			score2++;
+		}
+	}
+
+	public int returnScore1(){
+		return score1;
+	}
+
+	public int returnScore2(){
+		return score2;
+	}
 	
 	/**
 	 * Print board to screen
@@ -134,20 +152,6 @@ public class Tictactoe {
 			}		
 		}
 		return strBoard;
-	}
-	
-	/**
-	 * test unit 1st column X
-	 */
-	public void winXtest() {
-		for(int i = 0; i < rows; i++) {
-			for(int j = 0; j < columns; j++) {
-				if(j == 0)
-					board[i][j] = " X ";
-				else
-					board[i][j] = "   ";
-			}
-		}
 	}
 }
 
