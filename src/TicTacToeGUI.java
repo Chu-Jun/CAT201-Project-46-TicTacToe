@@ -45,6 +45,7 @@ public class TicTacToeGUI extends JFrame {
             for (int j = 0; j < cols; j++) {
                 board[i][j] = new JButton();
                 board[i][j].setFont(new Font("Ink Free", Font.BOLD, 120));
+                board[i][j].setBackground((new Color(128, 189, 171)));
                 board[i][j].addActionListener(new ButtonListener());
                 boardPanel.add(board[i][j]);
             }
