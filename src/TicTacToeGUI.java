@@ -110,6 +110,7 @@ public class TicTacToeGUI extends JFrame {
         public void actionPerformed(ActionEvent e) {
             JButton button = (JButton) e.getSource();
             button.setForeground(new Color(255, 0, 0));
+     
             // Find the button's coordinates on the game board
             int x = -1, y = -1;
             
@@ -121,7 +122,7 @@ public class TicTacToeGUI extends JFrame {
                     }
                 }
             }
-           if(currentPlayer.equals("X") && button.getText().equals("")){
+            if(currentPlayer.equals("X") && button.getText().equals("")){
                 button.setText("X");
                 currentPlayer = "O";
                 game.setPlay(x,  y, "X");
@@ -131,8 +132,15 @@ public class TicTacToeGUI extends JFrame {
                 currentPlayer = "X";
                 game.setPlay(x,  y, "O");
             }
-            
+
             if(game.isGameOverRow()) {
+
+                if (currentPlayer == "X") {
+                JOptionPane.showMessageDialog(null, "O has won this round!", "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "X has won this round!", "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
+                }
                 if(currentPlayer.equals("X")){
                     currentPlayer = "O";
                 }else{
@@ -153,7 +161,13 @@ public class TicTacToeGUI extends JFrame {
                 }
             }
             if(game.isGameOverColumn()) {
-                JOptionPane.showMessageDialog(null, currentPlayer + " has won this round!", "Winner!", JOptionPane.INFORMATION_MESSAGE);
+
+                if (currentPlayer == "X") {
+                    JOptionPane.showMessageDialog(null, "O has won this round!", "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                else{
+                    JOptionPane.showMessageDialog(null, "X has won this round!", "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
+                    }
                 if(currentPlayer.equals("X")){
                     currentPlayer = "O";
                 }else{
@@ -174,6 +188,12 @@ public class TicTacToeGUI extends JFrame {
                 }
             }
             if(game.isGameOverDiagonal()) {
+                if (currentPlayer == "X") {
+                    JOptionPane.showMessageDialog(null, "O has won this round!", "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                else{
+                    JOptionPane.showMessageDialog(null, "X has won this round!", "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
+                    }
                 if(currentPlayer.equals("X")){
                     currentPlayer = "O";
                 }else{
@@ -200,7 +220,3 @@ public class TicTacToeGUI extends JFrame {
 }
     
 }
- 
-
-
-
