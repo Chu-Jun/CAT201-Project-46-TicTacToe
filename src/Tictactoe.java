@@ -53,7 +53,6 @@ public class Tictactoe {
 	public boolean isGameOverRow() {
 		//checking rows
     	for(int i = 0; i < rows; i++) {
-			// System.out.println("test");	
     		if(!board[i][0].matches(regex)){ 
 				for(int k = 1; k < rows; k++){
 					if(!board[i][k-1].equals(board[i][k])){
