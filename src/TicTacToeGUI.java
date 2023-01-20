@@ -7,9 +7,6 @@ public class TicTacToeGUI extends JFrame {
     // Game board buttons
     private JButton[][] board;
 
-    // Game status label
-    private JLabel statusLabel;
-
     // Game logic object
     private Tictactoe game;
 
@@ -56,7 +53,6 @@ public class TicTacToeGUI extends JFrame {
         // Create a panel for the scoreboard
         JPanel scorJPanel = new JPanel();
         scorJPanel.setBackground(new Color(71,76,79));
-        // scorJPanel.setLayout(new GridLayout());
         scorJPanel.setLayout(null);
         
         JLabel X_icon = new JLabel();
@@ -149,9 +145,6 @@ public class TicTacToeGUI extends JFrame {
         splitPane.setEnabled(false);
         
         add(splitPane, BorderLayout.CENTER);
-
-        // Add the status panels to the frame
-        add(statusPanel, BorderLayout.SOUTH);
 
         // Display the GUI
         setVisible(true);
