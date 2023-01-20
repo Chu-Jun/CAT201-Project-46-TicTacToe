@@ -153,6 +153,7 @@ public class TicTacToeGUI extends JFrame {
                 }
             }
             if(game.isGameOverColumn()) {
+                JOptionPane.showMessageDialog(null, currentPlayer + " has won this round!", "Winner!", JOptionPane.INFORMATION_MESSAGE);
                 if(currentPlayer.equals("X")){
                     currentPlayer = "O";
                 }else{
