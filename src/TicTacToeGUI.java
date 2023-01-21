@@ -167,7 +167,7 @@ public class TicTacToeGUI extends JFrame {
     }
 
     public boolean checkTie(){
-        boolean full=true, tie=false;
+        boolean full=true;
         for(int i=0; i<row; i++){
             for(int j=0; j<column; j++){
                 if(board[i][j].getText()==""){
@@ -201,12 +201,14 @@ public class TicTacToeGUI extends JFrame {
                 currentPlayer = "O";
                 statusLabel2.setText(currentPlayer + "'s turn!");
                 game.setPlay(x,  y, "X");
+                statusLabel2.setText(currentPlayer + "'s turn");
             }
             if(currentPlayer.equals("O") && button.getText().equals("")){
                 button.setText("O");
                 currentPlayer = "X";
                 statusLabel2.setText(currentPlayer + "'s turn!");
                 game.setPlay(x,  y, "O");
+                statusLabel2.setText(currentPlayer + "'s turn");
             }
             System.out.println(game.printBoard() + "\n");
             if(game.isGameOverRow()) {
