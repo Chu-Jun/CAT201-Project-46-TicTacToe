@@ -36,7 +36,6 @@ public class StartGame implements ActionListener  {
        frame.setResizable(false);
        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        frame.getContentPane().setBackground(new Color(250, 219, 216));// hex:0x#FADBD8
-       frame.setVisible(true);
 
        //Set Welcome Panel (header) 
        frame.setLayout(new BorderLayout());
@@ -136,8 +135,7 @@ public class StartGame implements ActionListener  {
         gameStructurePanel.add(button);
         button.setBackground (new Color (250, 219,250));
 
-
-    //     frame.setVisible(true);
+        frame.setVisible(true);
     }
 
     public void actionPerformed(ActionEvent e){
