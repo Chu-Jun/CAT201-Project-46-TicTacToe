@@ -16,6 +16,7 @@ public class TicTacToeGUI extends JFrame {
     private int row;
     private int column;
     public String playerName1, playerName2;
+    JLabel scoreForX, scoreForO, statusLabel2;
 
     public TicTacToeGUI(String player1, String player2, int rows, int cols) {
 
@@ -89,7 +90,7 @@ public class TicTacToeGUI extends JFrame {
         statusLabel1.setBounds(150, 220, 1000, 50);
         scorJPanel.add(statusLabel1);
 
-        JLabel statusLabel2 = new JLabel(currentPlayer + "'s turn");
+        statusLabel2 = new JLabel(currentPlayer + "'s turn");
         statusLabel2.setForeground(Color.RED);
         statusLabel2.setFont(new Font("Serif", Font.ITALIC, 50));
         statusLabel2.setBounds(100, 270, 1000, 50);
@@ -101,13 +102,13 @@ public class TicTacToeGUI extends JFrame {
         scoreLabel.setBounds(10, 410, 1000, 50);
         scorJPanel.add(scoreLabel);  
 
-        JLabel scoreForX = new JLabel("X: " + game.returnScore1());
+        scoreForX = new JLabel("X: " + game.returnScore1());
         scoreForX.setForeground(Color.WHITE);
         scoreForX.setFont(new Font("Roboto Mono", Font.PLAIN, 25));
         scoreForX.setBounds(10, 480, 1000, 50);
         scorJPanel.add(scoreForX);  
 
-        JLabel scoreForO = new JLabel("O: " + game.returnScore2());
+        scoreForO = new JLabel("O: " + game.returnScore2());
         scoreForO.setForeground(Color.WHITE);
         scoreForO.setFont(new Font("Roboto Mono", Font.PLAIN, 25));
         scoreForO.setBounds(10, 550, 1000, 50);
@@ -165,6 +166,18 @@ public class TicTacToeGUI extends JFrame {
         }
     }
 
+    public boolean checkTie(){
+        boolean full=true, tie=false;
+        for(int i=0; i<row; i++){
+            for(int j=0; j<column; j++){
+                if(board[i][j].getText()==""){
+                    full = false;
+                }
+            }
+        }
+        return full;
+    }
+
 
     public class ButtonListener implements ActionListener{
         public void actionPerformed(ActionEvent e) {
@@ -173,7 +186,8 @@ public class TicTacToeGUI extends JFrame {
             String message;
             // Find the button's coordinates on the game board
             int x = -1, y = -1;
-            
+            int score;
+            String scoreInText;
             for (int i = 0; i < row; i++) {
                 for (int j = 0; j < column; j++) {
                     if (e.getSource() == board[i][j]) {
@@ -185,11 +199,13 @@ public class TicTacToeGUI extends JFrame {
             if(currentPlayer.equals("X") && button.getText().equals("")){
                 button.setText("X");
                 currentPlayer = "O";
+                statusLabel2.setText(currentPlayer + "'s turn!");
                 game.setPlay(x,  y, "X");
             }
             if(currentPlayer.equals("O") && button.getText().equals("")){
                 button.setText("O");
                 currentPlayer = "X";
+                statusLabel2.setText(currentPlayer + "'s turn!");
                 game.setPlay(x,  y, "O");
             }
             System.out.println(game.printBoard() + "\n");
@@ -212,9 +228,21 @@ public class TicTacToeGUI extends JFrame {
                 }
                 System.out.println(game.printBoard() + "\n" + currentPlayer +" wins!ROW");
                 if(currentPlayer.equals("X")){
-                    game.calculateScore("X");
-                }else{
                     game.calculateScore("O");
+                    score = game.returnScore1();
+                    scoreInText = score + "";
+                    scoreForX.setText("X: " + scoreInText);
+                    score = game.returnScore2();
+                    scoreInText = score + "";
+                    scoreForO.setText("O: " + scoreInText);
+                }else{
+                    game.calculateScore("X");
+                    score = game.returnScore1();
+                    scoreInText = score + "";
+                    scoreForX.setText("X: " + scoreInText);
+                    score = game.returnScore2();
+                    scoreInText = score + "";
+                    scoreForO.setText("O: " + scoreInText);
                 }
                 System.out.println(game.returnScore1());
                 System.out.println(game.returnScore2());
@@ -224,7 +252,7 @@ public class TicTacToeGUI extends JFrame {
                     currentPlayer = "X";
                 }
             }
-            if(game.isGameOverColumn()) {
+            else if(game.isGameOverColumn()) {
 
                 if (currentPlayer == "X") {
                     message = playerName2 + " has won this round!";
@@ -243,9 +271,21 @@ public class TicTacToeGUI extends JFrame {
                 }
                 System.out.println(game.printBoard() + "\n" + currentPlayer +" wins!COLUMN");
                 if(currentPlayer.equals("X")){
-                    game.calculateScore("X");
-                }else{
                     game.calculateScore("O");
+                    score = game.returnScore1();
+                    scoreInText = score + "";
+                    scoreForX.setText("X: " + scoreInText);
+                    score = game.returnScore2();
+                    scoreInText = score + "";
+                    scoreForO.setText("O: " + scoreInText);
+                }else{
+                    game.calculateScore("X");
+                    score = game.returnScore1();
+                    scoreInText = score + "";
+                    scoreForX.setText("X: " + scoreInText);
+                    score = game.returnScore2();
+                    scoreInText = score + "";
+                    scoreForO.setText("O: " + scoreInText);
                 }
                 System.out.println(game.returnScore1());
                 System.out.println(game.returnScore2());
@@ -255,7 +295,7 @@ public class TicTacToeGUI extends JFrame {
                     currentPlayer = "X";
                 }
             }
-            if(game.isGameOverDiagonal()) {
+            else if(game.isGameOverDiagonal()) {
                 if (currentPlayer == "X") {
                     message = playerName2 + " has won this round!";
                     JOptionPane.showMessageDialog(null, message, "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
@@ -273,22 +313,40 @@ public class TicTacToeGUI extends JFrame {
                 }
                 System.out.println(game.printBoard() + "\n" + currentPlayer +" wins!DIAGONAL");
             	if(currentPlayer.equals("X")){
-                game.calculateScore("X");
-            }else{
-                game.calculateScore("O");
-                
-            }
-            System.out.println(game.returnScore1());
-            System.out.println(game.returnScore2());
-            if(currentPlayer.equals("X")){
-                currentPlayer = "O";
-            }else{
-                currentPlayer = "X";
-            }
+                    game.calculateScore("O");
+                    score = game.returnScore1();
+                    scoreInText = score + "";
+                    scoreForX.setText("X: " + scoreInText);
+                    score = game.returnScore2();
+                    scoreInText = score + "";
+                    scoreForO.setText("O: " + scoreInText);
+                }else{
+                    game.calculateScore("X");
+                    score = game.returnScore1();
+                    scoreInText = score + "";
+                    scoreForX.setText("X: " + scoreInText);
+                    score = game.returnScore2();
+                    scoreInText = score + "";
+                    scoreForO.setText("O: " + scoreInText);
+                }
+                System.out.println(game.returnScore1());
+                System.out.println(game.returnScore2());
+                if(currentPlayer.equals("X")){
+                    currentPlayer = "O";
+                }else{
+                    currentPlayer = "X";
+                }
             
-        }
+            }else{
+                boolean tie = checkTie();
+                if(tie == true){
+                    message = "There is no winner as it is a tie.";
+                    JOptionPane.showMessageDialog(null, message, "Tie", JOptionPane.INFORMATION_MESSAGE);
+                    cleanBoard();
+                }
+            }
         
-    }
+        }
 }
     
 }
