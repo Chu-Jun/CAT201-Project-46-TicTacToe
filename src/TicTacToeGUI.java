@@ -61,7 +61,7 @@ public class TicTacToeGUI extends JFrame {
         scorJPanel.setLayout(null);
         
         JLabel X_icon = new JLabel();
-        ImageIcon x_icon = new ImageIcon(new ImageIcon("CAT201-Project-TicTacToe-main/src/X_image.png").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH));
+        ImageIcon x_icon = new ImageIcon(new ImageIcon("src/X_image.png").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH));
         X_icon.setIcon(x_icon);
         X_icon.setBounds(10, 10, 50, 50);
         scorJPanel.add(X_icon);
@@ -73,7 +73,7 @@ public class TicTacToeGUI extends JFrame {
         scorJPanel.add(playerLabel1);
 
         JLabel O_icon = new JLabel();
-        ImageIcon o_icon = new ImageIcon(new ImageIcon("CAT201-Project-TicTacToe-main/src/O_image.png").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH));
+        ImageIcon o_icon = new ImageIcon(new ImageIcon("src/O_image.png").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH));
         O_icon.setIcon(o_icon);
         O_icon.setBounds(10, 80, 50, 50);
         scorJPanel.add(O_icon);
@@ -213,132 +213,74 @@ public class TicTacToeGUI extends JFrame {
             System.out.println(game.printBoard() + "\n");
             if(game.isGameOverRow()) {
 
-                if (currentPlayer == "X") {
+                if (currentPlayer.equals("X")) {
                     message = playerName2 + " has won this round!";
                     JOptionPane.showMessageDialog(null, message, "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
+                    game.calculateScore("O");
                     cleanBoard();
                 }
                 else{
                     message = playerName1 + " has won this round!";
                     JOptionPane.showMessageDialog(null, message, "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
+                    game.calculateScore("X");
                     cleanBoard();
                 }
-                if(currentPlayer.equals("X")){
-                    currentPlayer = "O";
-                }else{
-                    currentPlayer = "X";
-                }
                 System.out.println(game.printBoard() + "\n" + currentPlayer +" wins!ROW");
-                if(currentPlayer.equals("X")){
-                    game.calculateScore("O");
-                    score = game.returnScore1();
-                    scoreInText = score + "";
-                    scoreForX.setText("X: " + scoreInText);
-                    score = game.returnScore2();
-                    scoreInText = score + "";
-                    scoreForO.setText("O: " + scoreInText);
-                }else{
-                    game.calculateScore("X");
-                    score = game.returnScore1();
-                    scoreInText = score + "";
-                    scoreForX.setText("X: " + scoreInText);
-                    score = game.returnScore2();
-                    scoreInText = score + "";
-                    scoreForO.setText("O: " + scoreInText);
-                }
+                score = game.returnScore1();
+                scoreInText = score + "";
+                scoreForX.setText("X: " + scoreInText);
+                score = game.returnScore2();
+                scoreInText = score + "";
+                scoreForO.setText("O: " + scoreInText);
                 System.out.println(game.returnScore1());
                 System.out.println(game.returnScore2());
-                if(currentPlayer.equals("X")){
-                    currentPlayer = "O";
-                }else{
-                    currentPlayer = "X";
-                }
             }
             else if(game.isGameOverColumn()) {
 
                 if (currentPlayer == "X") {
                     message = playerName2 + " has won this round!";
                     JOptionPane.showMessageDialog(null, message, "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
+                    game.calculateScore("O");
                     cleanBoard();
                 }
                 else{
                     message = playerName1 + " has won this round!";
                     JOptionPane.showMessageDialog(null, message, "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
+                    game.calculateScore("X");
                     cleanBoard();
                 }
-                if(currentPlayer.equals("X")){
-                    currentPlayer = "O";
-                }else{
-                    currentPlayer = "X";
-                }
                 System.out.println(game.printBoard() + "\n" + currentPlayer +" wins!COLUMN");
-                if(currentPlayer.equals("X")){
-                    game.calculateScore("O");
-                    score = game.returnScore1();
-                    scoreInText = score + "";
-                    scoreForX.setText("X: " + scoreInText);
-                    score = game.returnScore2();
-                    scoreInText = score + "";
-                    scoreForO.setText("O: " + scoreInText);
-                }else{
-                    game.calculateScore("X");
-                    score = game.returnScore1();
-                    scoreInText = score + "";
-                    scoreForX.setText("X: " + scoreInText);
-                    score = game.returnScore2();
-                    scoreInText = score + "";
-                    scoreForO.setText("O: " + scoreInText);
-                }
+                score = game.returnScore1();
+                scoreInText = score + "";
+                scoreForX.setText("X: " + scoreInText);
+                score = game.returnScore2();
+                scoreInText = score + "";
+                scoreForO.setText("O: " + scoreInText);
                 System.out.println(game.returnScore1());
                 System.out.println(game.returnScore2());
-                if(currentPlayer.equals("X")){
-                    currentPlayer = "O";
-                }else{
-                    currentPlayer = "X";
-                }
             }
             else if(game.isGameOverDiagonal()) {
                 if (currentPlayer == "X") {
                     message = playerName2 + " has won this round!";
                     JOptionPane.showMessageDialog(null, message, "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
+                    game.calculateScore("O");
                     cleanBoard();
                 }
                 else{
                     message = playerName1 + " has won this round!";
                     JOptionPane.showMessageDialog(null, message, "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
+                    game.calculateScore("X");
                     cleanBoard();
                 }
-                if(currentPlayer.equals("X")){
-                    currentPlayer = "O";
-                }else{
-                    currentPlayer = "X";
-                }
                 System.out.println(game.printBoard() + "\n" + currentPlayer +" wins!DIAGONAL");
-            	if(currentPlayer.equals("X")){
-                    game.calculateScore("O");
-                    score = game.returnScore1();
-                    scoreInText = score + "";
-                    scoreForX.setText("X: " + scoreInText);
-                    score = game.returnScore2();
-                    scoreInText = score + "";
-                    scoreForO.setText("O: " + scoreInText);
-                }else{
-                    game.calculateScore("X");
-                    score = game.returnScore1();
-                    scoreInText = score + "";
-                    scoreForX.setText("X: " + scoreInText);
-                    score = game.returnScore2();
-                    scoreInText = score + "";
-                    scoreForO.setText("O: " + scoreInText);
-                }
+                score = game.returnScore1();
+                scoreInText = score + "";
+                scoreForX.setText("X: " + scoreInText);
+                score = game.returnScore2();
+                scoreInText = score + "";
+                scoreForO.setText("O: " + scoreInText);
                 System.out.println(game.returnScore1());
                 System.out.println(game.returnScore2());
-                if(currentPlayer.equals("X")){
-                    currentPlayer = "O";
-                }else{
-                    currentPlayer = "X";
-                }
-            
             }else{
                 boolean tie = checkTie();
                 if(tie == true){
