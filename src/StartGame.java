@@ -147,19 +147,22 @@ public class StartGame implements ActionListener  {
             String player1 = player1TextField.getText();
             String player2 = player2TextField.getText();
             int rows=0, cols=0;
-            if(!gameGrid.getText().isEmpty()){
-                rows = Integer.valueOf(gameGrid.getText());
-                cols = rows;
-                if(rows < 3){
-                    JOptionPane.showMessageDialog(null, "The number of grid should be larger than 3");
-                }
-            }else{
-                JOptionPane.showMessageDialog(null, "Please enter the number of  grid that you prefer");
-            }
+            
             
             System.out.println(gameGrid.getText());
             
             if (!player1.isEmpty() && !player2.isEmpty()) {
+                while(gameGrid.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(null, "Please enter the number of  grid that you prefer"); 
+                    rows = Integer.valueOf(gameGrid.getText());
+                }
+                rows = Integer.valueOf(gameGrid.getText());
+                cols = rows;
+                if(rows < 3){
+                    JOptionPane.showMessageDialog(null, "The number of grid should be larger than 3");
+                    rows = 3;
+                    cols = rows;
+                }
                 frame.dispose();
                 TicTacToeGUI tictactoeGUI = new TicTacToeGUI(player1, player2, rows, cols);
             } else {

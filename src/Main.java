@@ -1,9 +1,6 @@
 import java.lang.foreign.ValueLayout.OfLong;
 import java.util.Scanner;
 
-// import javax.swing.JScrollPane;
-// import javax.swing.JTable;
-
 public class Main {
 
 	public static void main(String[] args) {
