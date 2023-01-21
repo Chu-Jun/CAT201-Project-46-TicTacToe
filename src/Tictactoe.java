@@ -117,10 +117,13 @@ public class Tictactoe {
 
 		if(!board[0][rows-1].matches(regex)){
 			int j=0;
-			for(int i=(rows-1); i>0; ){
-				if(!board[j][i].equals(board[++j][--i])){
+			for(int i=(rows-1); i>0; i--){
+				int m = (j+1);
+				int p = (i-1);
+				if(!board[j][i].equals(board[m][p])){
 					return false;
 				}
+				j++;
 			}
 			return true;
 		}
