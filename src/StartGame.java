@@ -151,7 +151,7 @@ public class StartGame implements ActionListener  {
             
             System.out.println(gameGrid.getText());
             
-            if (!player1.isEmpty() && !player2.isEmpty()) {
+           if (!player1.isEmpty() && !player2.isEmpty()) {
                 while(gameGrid.getText().isEmpty()){
                     JOptionPane.showMessageDialog(null, "Please enter the number of  grid that you prefer"); 
                     rows = Integer.valueOf(gameGrid.getText());
@@ -159,13 +159,16 @@ public class StartGame implements ActionListener  {
                 rows = Integer.valueOf(gameGrid.getText());
                 cols = rows;
                 if(rows < 3){
-                    JOptionPane.showMessageDialog(null, "The number of grid should be larger than 3");
-                    rows = 3;
-                    cols = rows;
+                    JOptionPane.showMessageDialog(null, "The number of grid cannot be less than 3 !");
                 }
-                frame.dispose();
-                TicTacToeGUI tictactoeGUI = new TicTacToeGUI(player1, player2, rows, cols);
-            } else {
+                else{
+                    rows = Integer.valueOf(gameGrid.getText());
+                    cols = rows;
+                    frame.dispose();
+                    TicTacToeGUI tictactoeGUI = new TicTacToeGUI(player1, player2, rows, cols);
+                }
+            } 
+            else {
                 JOptionPane.showMessageDialog(null, "Please enter a name for both players");
             }
             
