@@ -1,6 +1,7 @@
 /**
  * Tictactoe game
- * @author Swda
+ * program before enhancement: @author Swda
+ * final program: @author chujun, zeeching, hueyjing, kianhon
  *
  */
 public class Tictactoe {
@@ -116,6 +117,7 @@ public class Tictactoe {
 		}
 
 		if(!board[0][rows-1].matches(regex)){
+			System.out.println("CHECKING DIAGONAL");
 			int j=0;
 			for(int i=(rows-1); i>0; i--){
 				int m = (j+1);

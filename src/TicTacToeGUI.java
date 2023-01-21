@@ -18,7 +18,7 @@ public class TicTacToeGUI extends JFrame {
     public String playerName1, playerName2;
     JLabel scoreForX, scoreForO, statusLabel2;
 
-    public TicTacToeGUI(String player1, String player2, int rows, int cols) {
+    public TicTacToeGUI(String player1, String player2, int rows, int cols){
 
         row = rows;
         column = cols;
@@ -191,9 +191,11 @@ public class TicTacToeGUI extends JFrame {
 
     public class ButtonListener implements ActionListener{
         public void actionPerformed(ActionEvent e) {
+
             JButton button = (JButton) e.getSource();
             button.setForeground(new Color(255, 0, 0));
             String message;
+
             // Find the button's coordinates on the game board
             int x = -1, y = -1;
             int score;
@@ -212,14 +214,13 @@ public class TicTacToeGUI extends JFrame {
                 statusLabel2.setText(currentPlayer + "'s turn!");
                 game.setPlay(x,  y, "X");
             }
-            if(currentPlayer.equals("O") && button.getText().equals("")){
+            else if(currentPlayer.equals("O") && button.getText().equals("")){
                 button.setText("O");
                 currentPlayer = "X";
                 statusLabel2.setText(currentPlayer + "'s turn!");
                 game.setPlay(x,  y, "O");
             }
-            System.out.println(game.printBoard() + "\n");
-            if(game.isGameOverRow()) {
+            if(game.isGameOverRow() || game.isGameOverColumn() || game.isGameOverDiagonal()) {
 
                 if (currentPlayer.equals("X")) {
                     message = playerName2 + " has won this round!";
@@ -234,64 +235,12 @@ public class TicTacToeGUI extends JFrame {
                     cleanBoard();
                 }
                 statusLabel2.setText(currentPlayer + "'s turn!");
-                System.out.println(game.printBoard() + "\n" + currentPlayer +" wins!ROW");
                 score = game.returnScore1();
                 scoreInText = score + "";
                 scoreForX.setText("X: " + scoreInText);
                 score = game.returnScore2();
                 scoreInText = score + "";
                 scoreForO.setText("O: " + scoreInText);
-                System.out.println(game.returnScore1());
-                System.out.println(game.returnScore2());
-            }
-            else if(game.isGameOverColumn()) {
-
-                if (currentPlayer == "X") {
-                    message = playerName2 + " has won this round!";
-                    JOptionPane.showMessageDialog(null, message, "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
-                    game.calculateScore("O");
-                    cleanBoard();
-                }
-                else{
-                    message = playerName1 + " has won this round!";
-                    JOptionPane.showMessageDialog(null, message, "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
-                    game.calculateScore("X");
-                    cleanBoard();
-                }
-                statusLabel2.setText(currentPlayer + "'s turn!");
-                System.out.println(game.printBoard() + "\n" + currentPlayer +" wins!COLUMN");
-                score = game.returnScore1();
-                scoreInText = score + "";
-                scoreForX.setText("X: " + scoreInText);
-                score = game.returnScore2();
-                scoreInText = score + "";
-                scoreForO.setText("O: " + scoreInText);
-                System.out.println(game.returnScore1());
-                System.out.println(game.returnScore2());
-            }
-            else if(game.isGameOverDiagonal()) {
-                if (currentPlayer == "X") {
-                    message = playerName2 + " has won this round!";
-                    JOptionPane.showMessageDialog(null, message, "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
-                    game.calculateScore("O");
-                    cleanBoard();
-                }
-                else{
-                    message = playerName1 + " has won this round!";
-                    JOptionPane.showMessageDialog(null, message, "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
-                    game.calculateScore("X");
-                    cleanBoard();
-                }
-                statusLabel2.setText(currentPlayer + "'s turn!");
-                System.out.println(game.printBoard() + "\n" + currentPlayer +" wins!DIAGONAL");
-                score = game.returnScore1();
-                scoreInText = score + "";
-                scoreForX.setText("X: " + scoreInText);
-                score = game.returnScore2();
-                scoreInText = score + "";
-                scoreForO.setText("O: " + scoreInText);
-                System.out.println(game.returnScore1());
-                System.out.println(game.returnScore2());
             }else{
                 boolean tie = checkTie();
                 if(tie == true){
@@ -301,8 +250,6 @@ public class TicTacToeGUI extends JFrame {
                     statusLabel2.setText(currentPlayer + "'s turn!");
                 }
             }
-        
         }
-}
-    
+    }    
 }

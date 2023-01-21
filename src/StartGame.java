@@ -7,8 +7,6 @@ import java.awt.GridLayout;
 
 public class StartGame implements ActionListener  {
 
-
-   // JPanel player1Panel = new JPanel();
     JFrame frame = new JFrame();
     JPanel welcomePanel = new JPanel();
     JPanel player1Panel = new JPanel();
@@ -31,7 +29,7 @@ public class StartGame implements ActionListener  {
        //Frame design
        frame.setSize(800, 600);
        frame.setTitle ("Tic Tac Toe");
-       ImageIcon companyLogo = new ImageIcon("C:/Users/user/Desktop/CAT201-Project-TicTacToe-main/CAT201-Project-TicTacToe-main/src/OTTY-Logo.png");
+       ImageIcon companyLogo = new ImageIcon("C:/Users/User/Documents/GitHub/CAT201-Project-TicTacToe/src/OTTY-Logo.png");
        frame.setIconImage(companyLogo.getImage());
        frame.setResizable(false);
        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -99,7 +97,6 @@ public class StartGame implements ActionListener  {
 
     
        // Label for game structure (rows and column played)
-      
        gameStructureLabel.setText("Enter the number of rows \nand columns:");
        gameStructureLabel.setFont(new Font("Arial", Font.BOLD, 20)); //set font
        gameStructureLabel.setHorizontalTextPosition(JLabel.LEFT);
@@ -129,7 +126,6 @@ public class StartGame implements ActionListener  {
        gameStructurePanel.add(gameGrid);
 
        //This section adds a start button in order to start the game
-
         button.addActionListener(this);
         button.setFont(new Font("Arial", Font.BOLD,15));
         gameStructurePanel.add(button);
@@ -145,9 +141,6 @@ public class StartGame implements ActionListener  {
             String player1 = player1TextField.getText();
             String player2 = player2TextField.getText();
             int rows=0, cols=0;
-            
-            
-            System.out.println(gameGrid.getText());
             
            if (!player1.isEmpty() && !player2.isEmpty()) {
                 while(gameGrid.getText().isEmpty()){
@@ -169,9 +162,7 @@ public class StartGame implements ActionListener  {
             else {
                 JOptionPane.showMessageDialog(null, "Please enter a name for both players");
             }
-            
         }
-
     }
 
     public static void main(String[] args) {
