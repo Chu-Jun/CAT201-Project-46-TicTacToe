@@ -150,14 +150,15 @@ public class StartGame implements ActionListener  {
             if(!gameGrid.getText().isEmpty()){
                 rows = Integer.valueOf(gameGrid.getText());
                 cols = rows;
+                if(rows < 3){
+                    JOptionPane.showMessageDialog(null, "The number of grid should be larger than 3");
+                }
             }else{
                 JOptionPane.showMessageDialog(null, "Please enter the number of  grid that you prefer");
             }
             
             System.out.println(gameGrid.getText());
-            if(rows < 3){
-                JOptionPane.showMessageDialog(null, "The number of grid should be larger than 3");
-            }
+            
             if (!player1.isEmpty() && !player2.isEmpty()) {
                 frame.dispose();
                 TicTacToeGUI tictactoeGUI = new TicTacToeGUI(player1, player2, rows, cols);
