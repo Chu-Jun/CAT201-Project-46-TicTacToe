@@ -233,6 +233,7 @@ public class TicTacToeGUI extends JFrame {
                     game.calculateScore("X");
                     cleanBoard();
                 }
+                statusLabel2.setText(currentPlayer + "'s turn!");
                 System.out.println(game.printBoard() + "\n" + currentPlayer +" wins!ROW");
                 score = game.returnScore1();
                 scoreInText = score + "";
@@ -257,6 +258,7 @@ public class TicTacToeGUI extends JFrame {
                     game.calculateScore("X");
                     cleanBoard();
                 }
+                statusLabel2.setText(currentPlayer + "'s turn!");
                 System.out.println(game.printBoard() + "\n" + currentPlayer +" wins!COLUMN");
                 score = game.returnScore1();
                 scoreInText = score + "";
@@ -280,6 +282,7 @@ public class TicTacToeGUI extends JFrame {
                     game.calculateScore("X");
                     cleanBoard();
                 }
+                statusLabel2.setText(currentPlayer + "'s turn!");
                 System.out.println(game.printBoard() + "\n" + currentPlayer +" wins!DIAGONAL");
                 score = game.returnScore1();
                 scoreInText = score + "";
@@ -295,6 +298,7 @@ public class TicTacToeGUI extends JFrame {
                     message = "There is no winner as it is a tie.";
                     JOptionPane.showMessageDialog(null, message, "Tie", JOptionPane.INFORMATION_MESSAGE);
                     cleanBoard();
+                    statusLabel2.setText(currentPlayer + "'s turn!");
                 }
             }
         
