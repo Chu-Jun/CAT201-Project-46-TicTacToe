@@ -61,7 +61,7 @@ public class TicTacToeGUI extends JFrame {
         scorJPanel.setLayout(null);
         
         JLabel X_icon = new JLabel();
-        ImageIcon x_icon = new ImageIcon(new ImageIcon("src/X_image.png").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH));
+        ImageIcon x_icon = new ImageIcon(new ImageIcon("C:/Users/YEOH WAY HUP/Documents/GitHub/CAT201-Project-TicTacToe/src/X_image.png").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH));
         X_icon.setIcon(x_icon);
         X_icon.setBounds(10, 10, 50, 50);
         scorJPanel.add(X_icon);
@@ -73,7 +73,7 @@ public class TicTacToeGUI extends JFrame {
         scorJPanel.add(playerLabel1);
 
         JLabel O_icon = new JLabel();
-        ImageIcon o_icon = new ImageIcon(new ImageIcon("src/O_image.png").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH));
+        ImageIcon o_icon = new ImageIcon(new ImageIcon("C:/Users/YEOH WAY HUP/Documents/GitHub/CAT201-Project-TicTacToe/src/O_image.png").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH));
         O_icon.setIcon(o_icon);
         O_icon.setBounds(10, 80, 50, 50);
         scorJPanel.add(O_icon);
@@ -201,14 +201,12 @@ public class TicTacToeGUI extends JFrame {
                 currentPlayer = "O";
                 statusLabel2.setText(currentPlayer + "'s turn!");
                 game.setPlay(x,  y, "X");
-                statusLabel2.setText(currentPlayer + "'s turn");
             }
             if(currentPlayer.equals("O") && button.getText().equals("")){
                 button.setText("O");
                 currentPlayer = "X";
                 statusLabel2.setText(currentPlayer + "'s turn!");
                 game.setPlay(x,  y, "O");
-                statusLabel2.setText(currentPlayer + "'s turn");
             }
             System.out.println(game.printBoard() + "\n");
             if(game.isGameOverRow()) {
