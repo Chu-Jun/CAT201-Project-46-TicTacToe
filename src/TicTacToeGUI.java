@@ -93,20 +93,20 @@ public class TicTacToeGUI extends JFrame {
         JLabel statusLabel1 = new JLabel("It's");
         statusLabel1.setForeground(new Color(128, 189, 171));
         statusLabel1.setFont(new Font("Serif", Font.BOLD + Font.ITALIC, 50));
-        statusLabel1.setBounds(150, 210, 1000, 50);
+        statusLabel1.setBounds(180, 210, 1000, 50);
         scorJPanel.add(statusLabel1);
 
         // Show player's turn
         statusLabel2 = new JLabel(currentPlayer + "'s turn!");
         statusLabel2.setForeground(new Color(128, 189, 171));
         statusLabel2.setFont(new Font("Serif", Font.BOLD + Font.ITALIC, 50));
-        statusLabel2.setBounds(90, 260, 1000, 50);
+        statusLabel2.setBounds(120, 260, 1000, 50);
         scorJPanel.add(statusLabel2);
         
         // Create a panel for score
         JPanel textPanel = new JPanel();
         textPanel.setBackground(new Color(200, 219, 216));
-        textPanel.setBounds(12, 400, 350, 170);
+        textPanel.setBounds(14, 400, 390, 170);
         textPanel.setLayout(null);
         scorJPanel.add(textPanel);
         
@@ -135,7 +135,7 @@ public class TicTacToeGUI extends JFrame {
         JButton resetButton = new JButton();
         resetButton.setText("RESET");
         resetButton.setFont(new java.awt.Font("Tahoma", 1, 24)); 
-        resetButton.setBounds(85, 640, 200, 50);
+        resetButton.setBounds(105, 640, 200, 50);
         resetButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 cleanBoard();
@@ -147,7 +147,7 @@ public class TicTacToeGUI extends JFrame {
         JButton exitButton = new JButton();
         exitButton.setText("EXIT");
         exitButton.setFont(new java.awt.Font("Tahoma", 1, 24)); 
-        exitButton.setBounds(85, 710, 200, 50);
+        exitButton.setBounds(105, 710, 200, 50);
         exitButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
