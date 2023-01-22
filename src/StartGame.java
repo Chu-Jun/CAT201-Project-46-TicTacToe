@@ -31,7 +31,7 @@ public class StartGame implements ActionListener  {
        //Frame design
        frame.setSize(800, 600);
        frame.setTitle ("Tic Tac Toe");
-       ImageIcon companyLogo = new ImageIcon("C:/Users/user/Desktop/CAT201-Project-TicTacToe-main (1)/CAT201-Project-TicTacToe-main/src/TicTacToe.png");
+       ImageIcon companyLogo = new ImageIcon("C:/Users/User/Documents/GitHub/CAT201-Project-TicTacToe/src/TicTacToe.png");
        frame.setIconImage(companyLogo.getImage());
        frame.setResizable(false);
        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -73,7 +73,7 @@ public class StartGame implements ActionListener  {
        welcomePanel.add(welcomeLabel);
 
        //Label for Player 1
-       ImageIcon imagePlayer1 = new ImageIcon ("C:/Users/user/Desktop/CAT201-Project-TicTacToe-main (1)/CAT201-Project-TicTacToe-main/src/player1.png");
+       ImageIcon imagePlayer1 = new ImageIcon ("C:/Users/User/Documents/GitHub/CAT201-Project-TicTacToe/src/player1.png");
        label.setText("Player 1");
        label.setIcon(imagePlayer1);
        label.setHorizontalTextPosition(JLabel.CENTER);
@@ -87,7 +87,7 @@ public class StartGame implements ActionListener  {
       
        
        //Label for Player 2
-       ImageIcon imagePlayer2 = new ImageIcon ("C:/Users/user/Desktop/CAT201-Project-TicTacToe-main (1)/CAT201-Project-TicTacToe-main/src/Player2.png" );
+       ImageIcon imagePlayer2 = new ImageIcon ("C:/Users/User/Documents/GitHub/CAT201-Project-TicTacToe/src/Player2.png" );
        label2.setText("Player 2");
        label2.setIcon(imagePlayer2);
        label2.setHorizontalTextPosition(JLabel.CENTER);

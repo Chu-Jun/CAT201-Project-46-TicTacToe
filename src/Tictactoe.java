@@ -117,7 +117,6 @@ public class Tictactoe {
 		}
 
 		if(!board[0][rows-1].matches(regex)){
-			System.out.println("CHECKING DIAGONAL");
 			int j=0;
 			for(int i=(rows-1); i>0; i--){
 				int m = (j+1);
@@ -148,37 +147,6 @@ public class Tictactoe {
 
 	public int returnScore2(){
 		return score2;
-	}
-	
-
-	/**
-	 * Print board to screen FOR TESTING PURPOSE IN TERMINAL
-	 * @return strBoard
-	 */
-	public String printBoard() {
-		String strBoard = "";
-		for(int i = 0; i < rows; i++) {
-			for(int j = 0; j < columns; j++) {
-				if(j == columns-1)
-					strBoard += board[i][j];
-				else
-					strBoard += board[i][j] + "|";
-			}
-			if(i != rows-1)
-			for(int k = 0; k < columns; k++){
-				if(k==0){
-					strBoard += "\n";
-					continue;
-				}
-				if(k == columns-1){
-					strBoard += "---+---\n";
-					continue;
-				}
-				strBoard += "---+";
-				
-			}		
-		}
-		return strBoard;
 	}
 }
 
