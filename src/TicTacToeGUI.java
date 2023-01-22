@@ -33,8 +33,9 @@ public class TicTacToeGUI extends JFrame {
 
         // Set up the GUI
         setTitle("Tic Tac Toe");
-        setSize(800, 800);
+        setSize(1600, 820);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setResizable(false);
        
         // Split the frame into two section horizontally
         JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
@@ -162,7 +163,7 @@ public class TicTacToeGUI extends JFrame {
         splitPane.setResizeWeight(1);
     
         // Set divider location to 400 pixel value
-        splitPane.setDividerLocation(400);
+        splitPane.setDividerLocation(1100);
 
         // Lock divider location
         splitPane.setEnabled(false);
