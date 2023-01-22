@@ -34,7 +34,7 @@ public class TicTacToeGUI extends JFrame {
         // Set up the GUI
         setTitle("Tic Tac Toe");
         setSize(1600, 820);
-        ImageIcon companyLogo = new ImageIcon("C:/Users/YEOH WAY HUP/Documents/GitHub/CAT201-Project-TicTacToe/src/TicTacToe.png");
+        ImageIcon companyLogo = new ImageIcon("src/TicTacToe.png");
         setIconImage(companyLogo.getImage());
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
