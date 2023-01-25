@@ -45,7 +45,6 @@ public class TicTacToeGUI extends JFrame {
         // Create a panel for the game board
         JPanel boardPanel = new JPanel();
         boardPanel.setLayout(new GridLayout(rows,cols));
-        boardPanel.setBorder(BorderFactory.createLineBorder(new Color(71,76,79), 1));
         boardPanel.setBackground(new Color(128, 189, 171));
 
         // Create game board buttons
