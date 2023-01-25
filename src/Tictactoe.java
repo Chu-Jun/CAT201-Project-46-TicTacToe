@@ -55,10 +55,8 @@ public class Tictactoe {
 		boolean condition=false;
 		//checking rows
     	for(int i = 0; i < rows; i++) {
-			System.out.println("CHECKING ROW "+ i);
     		if(!board[i][0].matches(regex)){ 
 				for(int k = 1; k < rows; k++){
-					System.out.println("CHECKING COLUMN"+ k);
 					if(!board[i][k-1].equals(board[i][k])){
 						condition = false;
 						break;
