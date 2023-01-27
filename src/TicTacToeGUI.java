@@ -142,6 +142,7 @@ public class TicTacToeGUI extends JFrame {
         resetButton.setBounds(105, 640, 200, 50);
         resetButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
+                statusLabel2.setText("X's turn!");
                 cleanBoard();
             }
         });
